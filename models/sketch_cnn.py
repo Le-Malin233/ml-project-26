@@ -8,9 +8,8 @@ class SketchCNN(nn.Module):
     def __init__(self, num_classes=345):
         super().__init__()
         
-        # 更小更快的网络
         self.features = nn.Sequential(
-            # 输入: 1x112x112 (减小输入尺寸)
+            # 输入: 1x112x112
             nn.Conv2d(1, 32, kernel_size=3, padding=1),
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
@@ -32,7 +31,6 @@ class SketchCNN(nn.Module):
             nn.MaxPool2d(2),  # 7x7
         )
         
-        # 更小的分类器
         self.classifier = nn.Sequential(
             nn.Dropout(0.3),
             nn.Linear(256 * 7 * 7, 512),
@@ -61,4 +59,5 @@ class SketchCNN(nn.Module):
         x = self.features(x)
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
+
         return x
