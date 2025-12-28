@@ -6,10 +6,10 @@ import torch.nn.functional as F
 class SketchRNN(nn.Module):
     """基于坐标序列的草图识别RNN模型"""
     
-    def __init__(self, num_classes=345):  # 移除Config依赖
+    def __init__(self, num_classes=345):  
         super().__init__()
         
-        # 在函数内部获取配置
+        # 获取配置
         from config import get_config
         config = get_config()
         
@@ -59,4 +59,5 @@ class SketchRNN(nn.Module):
         
         # 分类
         output = self.classifier(weighted)
+
         return output
