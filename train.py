@@ -1,4 +1,4 @@
-# train.py - 简化版本
+# train.py 
 import os
 import torch
 import torch.nn as nn
@@ -15,7 +15,6 @@ from models.sketch_rnn import SketchRNN
 from models.sketch_transformer import SketchTransformer
 
 class Config:
-    """简单的配置类，避免导入问题"""
     BATCH_SIZE = 64
     LEARNING_RATE = 0.001
     EPOCHS = 50

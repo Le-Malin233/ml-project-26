@@ -1,7 +1,6 @@
 # config.py
 import torch
 
-# 使用字典而不是类，避免导入问题
 CONFIG = {
     # 数据路径
     'DATA_ROOT': "./data",
