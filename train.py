@@ -12,7 +12,6 @@ import argparse
 from utils.data_loader import get_data_loaders, SketchDataset
 from models.sketch_cnn import SketchCNN
 from models.sketch_rnn import SketchRNN
-from models.sketch_transformer import SketchTransformer
 
 class Config:
     BATCH_SIZE = 64
@@ -69,8 +68,7 @@ class Trainer:
             return SketchCNN(num_classes=Config.NUM_CLASSES)
         elif self.model_type == "rnn":
             return SketchRNN(num_classes=Config.NUM_CLASSES)
-        elif self.model_type == "transformer":
-            return SketchTransformer(num_classes=Config.NUM_CLASSES)
+
         else:
             raise ValueError(f"未知模型类型: {self.model_type}")
     
@@ -200,8 +198,8 @@ class Trainer:
 def main():
     parser = argparse.ArgumentParser(description='草图识别模型训练')
     parser.add_argument('--model', type=str, default='cnn', 
-                       choices=['cnn', 'rnn', 'transformer'],
-                       help='选择模型类型: cnn, rnn, transformer')
+                       choices=['cnn', 'rnn'],
+                       help='选择模型类型: cnn, rnn')
     parser.add_argument('--epochs', type=int, default=50,
                        help='训练轮数')
     parser.add_argument('--batch_size', type=int, default=64,
@@ -221,4 +219,5 @@ def main():
     trainer.train()
 
 if __name__ == "__main__":
+
     main()
