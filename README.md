@@ -10,3 +10,7 @@
    `--epochs`表示训练轮数，即整个数据集将被模型学习的次数;\
    `--batch_size`表示批大小，即每次更新模型参数时，一个批次使用的图像数量;\
    `--lr`表示学习率，即控制模型参数更新的步长。
+## 草图生成
+在草图生成部分，本项目参考[Sketch-RNN](https://github.com/rfeinman/Sketch-RNN)实现了草图的生成。
+1. 运行`python train_sketch_rnn.py --data_dir=<dataset_directory> --data_set=<dataset_to_train> --save_dir=<model_save_directory> --num_epochs=<num>`训练模型。
+2. 运行`python generate.py --model_path <model_save_directory> --num_samples 1000 --output_dir <output_directory> --temperature 0.2`从训练好的模型生成`.npy`序列文件和`.png`图像文件。
